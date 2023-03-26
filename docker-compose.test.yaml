@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+
+  server_test:
+    build:
+      context: .
+      dockerfile: compose/test/Dockerfile
+    image: server_server
+    depends_on:
+        - test_db
+    ports:
+      - "8000:8000"
+    env_file:
+      - envs/server
+      - envs/test_db
+    volumes:
+      - ./logs:/app/logs
+
+
+  test_db:
+    hostname: test_db
+    image: kartoza/postgis
+    volumes:
+      - ./postgres-data:/var/lib/postgresql
+    env_file:
+      - envs/test_db

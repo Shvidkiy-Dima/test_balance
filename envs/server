@@ -1,0 +1,4 @@
+TEST_DB_HOST=test_db
+TEST_DB_NAME=test_transactions_db
+DB_HOST=db
+DB_NAME=transactions_db
